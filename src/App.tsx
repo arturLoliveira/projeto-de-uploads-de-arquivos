@@ -1,10 +1,9 @@
-import { CreateLogin } from "./components/ui/create-login";
-
+import { Routers } from "./routers";
 
 export function App() {
   
   return (
-    <CreateLogin />
+    <Routers />
 
   )
 }

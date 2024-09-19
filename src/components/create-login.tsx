@@ -1,10 +1,10 @@
-import { createLogin } from "../../http/create-login";
+import { createLogin } from "../http/create-login";
 import { toast } from "sonner";
 import { useForm } from "react-hook-form";
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from "zod";
-import { Input } from "./input";
-import { Button } from "./button";
+import { Input } from "./ui/input";
+import { Button } from "./ui/button";
 
 const createLoginSchema = z.object({
     email: z.string().min(1, 'Informe o Email'),
