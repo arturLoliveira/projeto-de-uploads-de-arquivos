@@ -10,14 +10,15 @@ export function Routers() {
             <BrowserRouter>
                 <Routes>
                     <Route path="/" element={<CreateLogin />} />
-                    <Route
+                    {/* <Route
                         path="/app/:id"
                         element={
                             <ProtectedRoute>
                                 <Summary />
-                            </ProtectedRoute>
+                            </ProtectedRoute>s
                         }
-                    />
+                    /> */}
+                    <Route path="/app" element={<Summary />} />
                 </Routes>
             </BrowserRouter>
         </AuthProvider>

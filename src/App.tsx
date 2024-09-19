@@ -1,9 +1,12 @@
+import { Dialog } from "@radix-ui/react-dialog";
 import { Routers } from "./routers";
 
 export function App() {
   
   return (
-    <Routers />
+    <Dialog>
+      <Routers />
+    </Dialog>
 
   )
 }

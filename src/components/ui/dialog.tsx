@@ -50,7 +50,7 @@ export function DialogDescription(
   return (
     <DialogPrimitive.DialogDescription
       {...props}
-      className="text-zinc-400 text-sm leading-relaxed"
+      className="text-white text-sm leading-relaxed"
     />
   )
 }
