@@ -1,8 +1,6 @@
 import { CirclePlus } from "lucide-react";
 import LogoUfop from '../assets/ufop.png'
 import { DialogTrigger } from "@radix-ui/react-dialog";
-import { useNavigate } from "react-router-dom";
-import { useState } from "react";
 
 
 interface CardBoxProps {

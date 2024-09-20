@@ -3,6 +3,7 @@ import { Summary } from './components/summary';
 import { CreateLogin } from './components/create-login';
 import { AuthProvider } from './services/AuthServices';
 import ProtectedRoute from './services/ProtectedRoute';
+import { CoursePage } from './components/course-page';
 
 export function Routers() {
     return (
@@ -19,6 +20,7 @@ export function Routers() {
                         }
                     /> */}
                     <Route path="/app" element={<Summary />} />
+                    <Route path="/course/:subject" element={<CoursePage />} />
                 </Routes>
             </BrowserRouter>
         </AuthProvider>

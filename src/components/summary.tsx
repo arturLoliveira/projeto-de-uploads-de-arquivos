@@ -1,36 +1,20 @@
 import { Dialog } from "@radix-ui/react-dialog";
 import { CardBox } from "./card-box";
-import { InOrbitIcon } from "./in-orbit-icon";
 import { Separator } from "./ui/separator";
-import { CircleUser, LayoutDashboard, CircleHelp } from 'lucide-react'
 import { OpenCourse } from "./open-course";
 import { useState } from "react";
+import { Sidebar } from "./SideBar";
 
 export function Summary() {
     const [selectedSubjects, setSelectedSubjects] = useState<string[]>([]);
 
 
     const openDialogWithSubjects = (subjects: string[]) => {
-        setSelectedSubjects(subjects); // Define as matérias para o curso selecionado
+        setSelectedSubjects(subjects); 
     };
     return (
-        <div className="flex flex-row">
-            <div className="flex flex-col items-center gap-16 bg-zinc-500 h-screen px-6 py-2">
-                <InOrbitIcon />
-
-                <div className="flex flex-col gap-1 items-center justify-center cursor-pointer">
-                    <CircleUser />
-                    <span>User</span>
-                </div>
-                <div className="flex flex-col gap-1 items-center justify-center cursor-pointer">
-                    <LayoutDashboard />
-                    <span>Dashboard</span>
-                </div>
-                <div className="flex flex-col gap-1 items-center justify-center cursor-pointer">
-                    <CircleHelp />
-                    <span>Help</span>
-                </div>
-            </div>
+        <div className="flex">
+            <Sidebar />
             <div className="flex flex-col gap-6">
                 <div className="flex px-4 py-2">
                     <h1 className="text-3xl font-bold">Cursos da UFOP</h1>

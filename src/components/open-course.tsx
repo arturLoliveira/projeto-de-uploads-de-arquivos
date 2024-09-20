@@ -13,7 +13,7 @@ export function OpenCourse({ subjects }: OpenCourseProps) {
   const navigate = useNavigate();
 
   const handleSubjectClick = (subject: string) => {
-    navigate(`/materias/${subject.toLowerCase()}`); // Redireciona para a página da matéria
+    navigate(`/course/${subject.toLowerCase()}`); // Redireciona para a página da matéria
   };
 
   return (
