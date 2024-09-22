@@ -5,6 +5,7 @@ import { AuthProvider } from './services/AuthServices';
 import ProtectedRoute from './services/ProtectedRoute';
 import { CoursePage } from './components/course-page';
 
+
 export function Routers() {
     return (
         <AuthProvider>
@@ -20,7 +21,8 @@ export function Routers() {
                         }
                     /> */}
                     <Route path="/app" element={<Summary />} />
-                    <Route path="/course/:subject" element={<CoursePage />} />
+                    <Route path="/course/:subjectId" element={<CoursePage />} />                    
+                    
                 </Routes>
             </BrowserRouter>
         </AuthProvider>

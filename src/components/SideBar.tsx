@@ -10,17 +10,17 @@ export function Sidebar() {
       };
 
     return(
-        <div className="flex flex-col items-center gap-16 bg-zinc-500 h-screen px-6 py-2">
+        <div className="flex flex-col items-center gap-16 h-screen bg-zinc-500  px-6 py-2">
                 <InOrbitIcon />
 
                 <div className="flex flex-col gap-1 items-center justify-center cursor-pointer">
                     <CircleUser />
                     <span>User</span>
                 </div>
-                <div className="flex flex-col gap-1 items-center justify-center cursor-pointer" onClick={handleSubjectClick}>
+                <button type="button" className="flex flex-col gap-1 items-center justify-center cursor-pointer" onClick={handleSubjectClick}>
                     <LayoutDashboard />
                     <span>Dashboard</span>
-                </div>
+                </button>
                 <div className="flex flex-col gap-1 items-center justify-center cursor-pointer">
                     <CircleHelp />
                     <span>Help</span>

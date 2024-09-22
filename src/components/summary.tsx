@@ -20,13 +20,13 @@ export function Summary() {
                     <h1 className="text-3xl font-bold">Cursos da UFOP</h1>
                 </div>
                 <Separator />
-                <div className="mx-5 flex items-center justify-center gap-28 flex-wrap">
+                <div className="mx-5 py-6 flex items-center justify-center gap-28 flex-wrap">
 
 
-                    <CardBox title="Sistemas de Informação" subjects={['bd2', 'ftc', 'eng software', 'prog 1']} openDialog={openDialogWithSubjects} />
-                    <CardBox title="Engenharia de computação" subjects={['prog1', 'fisica', 'compiladores', 'gaal']} openDialog={openDialogWithSubjects} />
-                    <CardBox title="Engenharia Eletrica" subjects={['oac', 'quimica', 'circuitos']} openDialog={openDialogWithSubjects} />
-                    <CardBox title="Engenharia de Produção" subjects={['custos', 'calculo', 'pli']} openDialog={openDialogWithSubjects} />
+                    <CardBox title="Sistemas de Informação" subjects={['algoritmos', 'ftc', 'eng software', 'prog 1']} openDialog={openDialogWithSubjects} />
+                    <CardBox title="Engenharia de computação" subjects={['fisica', 'compiladores']} openDialog={openDialogWithSubjects} />
+                    <CardBox title="Engenharia Eletrica" subjects={['oac', 'circuitos']} openDialog={openDialogWithSubjects} />
+                    <CardBox title="Engenharia de Produção" subjects={['custos', 'calculo']} openDialog={openDialogWithSubjects} />
 
                     <Dialog open={selectedSubjects.length > 0} onOpenChange={(isOpen) => !isOpen && setSelectedSubjects([])}>
                         <OpenCourse subjects={selectedSubjects} />
