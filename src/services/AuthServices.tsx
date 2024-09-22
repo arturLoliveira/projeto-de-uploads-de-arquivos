@@ -1,8 +1,6 @@
-// AuthServices.tsx
-import { createContext, useContext, useState, ReactNode } from 'react';
+import { createContext, useContext, useState, type ReactNode } from 'react';
 
 interface User {
-  // Defina as propriedades do usuário conforme sua aplicação
   id: string;
   name: string;
   email: string;

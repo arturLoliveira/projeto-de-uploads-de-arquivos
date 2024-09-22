@@ -5,6 +5,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from "zod";
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
+import { useNavigate } from "react-router-dom";
 
 const createLoginSchema = z.object({
     email: z.string().min(1, 'Informe o Email'),
@@ -12,6 +13,7 @@ const createLoginSchema = z.object({
   })
   type CreateLoginSchema = z.infer<typeof createLoginSchema>
 export function CreateLogin() {
+  const navigate = useNavigate();
     const {
         handleSubmit
       } = useForm<CreateLoginSchema>({
@@ -32,6 +34,10 @@ export function CreateLogin() {
           toast.error('Erro ao criar o login')
         }
       }
+      function handleCreateUser() {
+        
+        navigate('course/create-user');
+      }
     return(
         <div className="bg-zinc-800 h-screen flex items-center justify-center">
       <div className="flex flex-col gap-6 items-center justify-center max-w-[540px] py-10 px-5 w-full bg-zinc-600">
@@ -41,6 +47,11 @@ export function CreateLogin() {
           <Input type="password" name="" id="" placeholder="Digite sua senha:"/>
           <Button variant="secondary" className="flex-1">Fazer Login</Button>
         </form>
+        <div className="flex gap-2 items-center">
+          <span >Ainda não é cadastrado?</span>
+          <Button variant="secondary" type="button" className="text-white" onClick={handleCreateUser}>Cadastre-se</Button>
+          
+        </div>
       </div>
     </div>
     )

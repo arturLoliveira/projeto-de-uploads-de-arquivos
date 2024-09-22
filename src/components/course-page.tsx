@@ -5,6 +5,7 @@ import { FileList } from "./get-file"
 import { Sidebar } from "./SideBar";
 import { Separator } from "./ui/separator";
 
+
 export function CoursePage() {
 
   const { subjectId } = useParams();

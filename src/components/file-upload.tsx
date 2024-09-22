@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
 interface FileUploadProps {
-  subjectId: string
+  subjectId: string | undefined
 }
 
 
@@ -21,7 +21,7 @@ export const FileUpload: React.FC<FileUploadProps> = ({ subjectId }) => {
     if (!file) return
 
     const formData = new FormData()
-    formData.append('file', file) // Nome do campo que o backend espera
+    formData.append('file', file) 
 
     try {
       const response = await fetch(
@@ -38,7 +38,7 @@ export const FileUpload: React.FC<FileUploadProps> = ({ subjectId }) => {
 
       const result = await response.json()
       setMessage(result.message)
-      setFile(null) // Limpa o estado do arquivo após o upload
+      setFile(null) 
     } catch (error) {
       setMessage('Erro ao enviar arquivo.')
     }

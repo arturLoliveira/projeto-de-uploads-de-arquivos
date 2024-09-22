@@ -1,6 +1,3 @@
-// ProtectedRoute.tsx
-import React from 'react';
-import { Navigate } from 'react-router-dom';
 import { useAuth } from '../services/AuthServices';
 
 interface ProtectedRouteProps {
@@ -12,8 +9,6 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
 
   if (auth.user) {
     return children;
-  } else {
-    return <Navigate to="/" />;
   }
 };
 

@@ -3,7 +3,7 @@ import dayjs from 'dayjs'
 import ptBR from 'dayjs/locale/pt-BR'
 
 interface FileListProps {
-  subjectId: string
+  subjectId: string | undefined
 }
 
 interface FileMetadata {
@@ -13,7 +13,7 @@ interface FileMetadata {
   size: number
   type: string
   upload_date: string
-  url: string // URL do arquivo gerado pelo backend
+  url: string 
 }
 dayjs.locale(ptBR)
 
@@ -22,7 +22,7 @@ export const FileList: React.FC<FileListProps> = ({ subjectId }) => {
   const [message, setMessage] = useState('')
 
   useEffect(() => {
-    // Função para buscar os arquivos associados à matéria
+    
     const fetchFiles = async () => {
       try {
         const response = await fetch(

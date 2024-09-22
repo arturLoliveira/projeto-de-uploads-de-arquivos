@@ -4,6 +4,8 @@ import { CreateLogin } from './components/create-login';
 import { AuthProvider } from './services/AuthServices';
 import ProtectedRoute from './services/ProtectedRoute';
 import { CoursePage } from './components/course-page';
+import { CreateSubject } from './components/create-subject';
+import { CreateUser } from './components/create-user';
 
 
 export function Routers() {
@@ -17,11 +19,13 @@ export function Routers() {
                         element={
                             <ProtectedRoute>
                                 <Summary />
-                            </ProtectedRoute>s
+                            </ProtectedRoute>
                         }
                     /> */}
                     <Route path="/app" element={<Summary />} />
-                    <Route path="/course/:subjectId" element={<CoursePage />} />                    
+                    <Route path="/course/:subjectId" element={<CoursePage />} />   
+                    <Route path="/create-course/:courseId" element={<CreateSubject />} />                  
+                    <Route path="/course/create-user" element={<CreateUser />} />
                     
                 </Routes>
             </BrowserRouter>

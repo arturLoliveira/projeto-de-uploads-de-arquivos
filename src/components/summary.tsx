@@ -7,11 +7,13 @@ import { Sidebar } from "./SideBar";
 
 export function Summary() {
     const [selectedSubjects, setSelectedSubjects] = useState<string[]>([]);
+    const [selectedCourse, setSelectedCourse] = useState<string | null>(null);
 
-
-    const openDialogWithSubjects = (subjects: string[]) => {
+    const openDialogWithSubjects = (subjects: string[], courseTitle: string) => {
         setSelectedSubjects(subjects); 
+        setSelectedCourse(courseTitle); 
     };
+
     return (
         <div className="flex">
             <Sidebar />
@@ -21,18 +23,17 @@ export function Summary() {
                 </div>
                 <Separator />
                 <div className="mx-5 py-6 flex items-center justify-center gap-28 flex-wrap">
-
-
-                    <CardBox title="Sistemas de Informação" subjects={['algoritmos', 'ftc', 'eng software', 'prog 1']} openDialog={openDialogWithSubjects} />
-                    <CardBox title="Engenharia de computação" subjects={['fisica', 'compiladores']} openDialog={openDialogWithSubjects} />
-                    <CardBox title="Engenharia Eletrica" subjects={['oac', 'circuitos']} openDialog={openDialogWithSubjects} />
-                    <CardBox title="Engenharia de Produção" subjects={['custos', 'calculo']} openDialog={openDialogWithSubjects} />
+                    <CardBox title="course_sistemas_de_informação" subjects={['subject_redes_1', 'ftc', 'eng software', 'prog 1']} openDialog={openDialogWithSubjects} />
+                    <CardBox title="course_engenharia_de_computacao" subjects={['fisica', 'compiladores']} openDialog={openDialogWithSubjects} />
+                    <CardBox title="course_engenharia_eletrica" subjects={['oac', 'circuitos']} openDialog={openDialogWithSubjects} />
+                    <CardBox title="course_engenharia_de_producao" subjects={['custos', 'calculo']} openDialog={openDialogWithSubjects} />
 
                     <Dialog open={selectedSubjects.length > 0} onOpenChange={(isOpen) => !isOpen && setSelectedSubjects([])}>
-                        <OpenCourse subjects={selectedSubjects} />
+                        <OpenCourse subjects={selectedSubjects} course={selectedCourse} />
                     </Dialog>
                 </div>
             </div>
         </div>
-    )
+    );
 }
+
