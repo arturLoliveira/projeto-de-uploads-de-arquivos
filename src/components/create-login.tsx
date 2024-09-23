@@ -51,12 +51,12 @@ export function CreateLogin() {
         <form onSubmit={handleLogin} className="flex-1 flex flex-col items-center justify-between gap-5">
           <Input type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} required placeholder="Digite seu email:" />
           <Input type="password" value={password} id="password" onChange={(e) => setPassword(e.target.value)} required placeholder="Digite sua senha:" />
-          <Button variant="secondary" className="flex-1">Fazer Login</Button>
+          <Button  className="flex-1">Fazer Login</Button>
         </form>
         {error && <p className="text-red-500">{error}</p>} {/* Exibe mensagem de erro */}
         <div className="flex gap-2 items-center">
           <span className="text-zinc-300">Ainda não é cadastrado?</span>
-          <Button variant="secondary" type="button" className="text-white" onClick={handleCreateUser}>Cadastre-se</Button>
+          <Button type="button" className="text-white" onClick={handleCreateUser}>Cadastre-se</Button>
         </div>
       </div>
     </div>
