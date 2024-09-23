@@ -1,15 +1,14 @@
-import { useAuth } from '../services/AuthServices';
+import { Navigate } from 'react-router-dom';
+import { useAuth } from './AuthServices'; 
 
-interface ProtectedRouteProps {
-  children: JSX.Element;
-}
+const ProtectedRoute = ({ children }) => {
+  const { user } = useAuth(); 
 
-const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
-  const auth = useAuth();
-
-  if (auth.user) {
-    return children;
+  if (!user) {
+    return <Navigate to="/" />;
   }
+
+  return children; 
 };
 
 export default ProtectedRoute;

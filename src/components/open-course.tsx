@@ -48,7 +48,7 @@ export function OpenCourse({ course }: OpenCourseProps) {
         <DialogDescription>Escolha uma matéria abaixo:</DialogDescription>
       </div>
 
-      <ul className="space-y-2 gap-6 my-6 flex flex-col ">
+      <ul className="space-y-2 gap-6 my-6 flex flex-col">
         {subjects.map((subject, index) => (
           // biome-ignore lint/a11y/useKeyWithClickEvents: <explanation>
           // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>

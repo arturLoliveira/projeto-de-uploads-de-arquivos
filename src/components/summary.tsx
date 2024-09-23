@@ -22,7 +22,7 @@ export function Summary() {
                     <h1 className="text-3xl font-bold">Cursos da UFOP</h1>
                 </div>
                 <Separator />
-                <div className="mx-5 py-6 flex items-center justify-center gap-28 flex-wrap">
+                <div className="mx-5 py-2 flex items-center justify-center gap-24 flex-wrap">
                     <CardBox title="course_sistemas_de_informação" subjects={['subject_redes_1', 'ftc', 'eng software', 'prog 1']} openDialog={openDialogWithSubjects} />
                     <CardBox title="course_engenharia_de_computacao" subjects={['fisica', 'compiladores']} openDialog={openDialogWithSubjects} />
                     <CardBox title="course_engenharia_eletrica" subjects={['oac', 'circuitos']} openDialog={openDialogWithSubjects} />
