@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Button } from './ui/button'
 
 interface FileUploadProps {
   subjectId: string | undefined
@@ -49,7 +50,7 @@ export const FileUpload: React.FC<FileUploadProps> = ({ subjectId }) => {
   return (
     <div className="flex flex-col gap-5 space-x-4">
       <h1 className='font-bold'>Envie seu arquivo referente à matéria</h1>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className='flex gap-4'>
         <input
           type="file"
           id="file-upload"
@@ -63,9 +64,9 @@ export const FileUpload: React.FC<FileUploadProps> = ({ subjectId }) => {
           Escolher arquivo
         </label>
 
-        <button type='submit' className='mx-4'>
+        <Button variant='secondary' type='submit' className='mx-4'>
           Enviar arquivo
-        </button>
+        </Button>
       </form>
     
       {fileName && <span className='text-gray-500'>Arquivo selecionado: {fileName}</span>}

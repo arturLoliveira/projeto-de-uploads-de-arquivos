@@ -67,7 +67,7 @@ export const CreateSubject = () => {
               className='border-4 border-zinc-600 outline-none'
             />
           </div>
-          <Button variant='secondary' type="submit">Criar Matéria</Button>
+          <Button  type="submit">Criar Matéria</Button>
         </form>
         {message && <p>{message}</p>}
       </div>
