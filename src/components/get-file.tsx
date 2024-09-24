@@ -1,4 +1,4 @@
-import { Trash2 } from 'lucide-react'
+import { Trash2, Download } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import dayjs from 'dayjs'
 import ptBR from 'dayjs/locale/pt-BR'
@@ -90,14 +90,15 @@ export const FileList: React.FC<FileListProps> = ({ subjectId }) => {
             <h1 className="font-bold">Nome do Arquivo</h1>
             <span>{file.original_name}</span>
             <h1 className="font-bold">Data de envio</h1>
-            <span>{file.upload_date}</span>
+            <span>{dayjs(file.upload_date).format('DD/MM/YYYY')}</span>
             <a
               href={file.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="font-bold"
+              className="font-bold flex gap-4"
             >
               Download
+              <Download className='text-green-600' />
             </a>
           </div>
         ))}
