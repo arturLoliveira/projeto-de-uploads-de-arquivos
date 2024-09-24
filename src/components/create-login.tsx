@@ -27,9 +27,9 @@ export function CreateLogin() {
         throw new Error('Falha ao fazer login');
       }
   
-      const data = await response.json();
-      console.log('Login bem-sucedido:', data.token);
-      localStorage.setItem('token', data.token); // Armazena o token
+      const { token } = await response.json();
+      console.log('Login bem-sucedido:', token);
+      localStorage.setItem('token', token); // Armazena o token
 
       signin({ id: email, name: "Nome do Usuário", email });
   

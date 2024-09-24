@@ -11,6 +11,7 @@ export function Sidebar() {
         navigate('/app'); 
       };
       function handleLogout() {
+        localStorage.removeItem('token')
         signout()
         navigate('/')
       }

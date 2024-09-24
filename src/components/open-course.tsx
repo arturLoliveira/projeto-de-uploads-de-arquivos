@@ -36,6 +36,7 @@ export function OpenCourse({ course }: OpenCourseProps) {
     }
 
     fetchSubjects()
+
   }, [course])
   return (
     <DialogContent className="flex flex-col gap-6 h-full">

@@ -4,15 +4,16 @@ interface FileUploadProps {
   subjectId: string | undefined
 }
 
-
 export const FileUpload: React.FC<FileUploadProps> = ({ subjectId }) => {
- 
   const [file, setFile] = useState<File | null>(null)
+  const [fileName, setFileName] = useState<string>('') // Estado para armazenar o nome do arquivo
   const [message, setMessage] = useState('')
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files.length > 0) {
-      setFile(e.target.files[0])
+      const selectedFile = e.target.files[0]
+      setFile(selectedFile)
+      setFileName(selectedFile.name) // Atualiza o nome do arquivo selecionado
     }
   }
 
@@ -21,7 +22,7 @@ export const FileUpload: React.FC<FileUploadProps> = ({ subjectId }) => {
     if (!file) return
 
     const formData = new FormData()
-    formData.append('file', file) 
+    formData.append('file', file)
 
     try {
       const response = await fetch(
@@ -39,6 +40,7 @@ export const FileUpload: React.FC<FileUploadProps> = ({ subjectId }) => {
       const result = await response.json()
       setMessage(result.message)
       setFile(null) 
+      setFileName('') // Limpa o nome do arquivo após o envio
     } catch (error) {
       setMessage('Erro ao enviar arquivo.')
     }
@@ -46,7 +48,7 @@ export const FileUpload: React.FC<FileUploadProps> = ({ subjectId }) => {
 
   return (
     <div className="flex flex-col gap-5 space-x-4">
-      <h1 className='font-bold'>Envie seu arquvio referente a matéria</h1>
+      <h1 className='font-bold'>Envie seu arquivo referente à matéria</h1>
       <form onSubmit={handleSubmit}>
         <input
           type="file"
@@ -60,8 +62,16 @@ export const FileUpload: React.FC<FileUploadProps> = ({ subjectId }) => {
         >
           Escolher arquivo
         </label>
-        <button type='submit' className='mx-4'>Enviar arquivo</button>
+
+        <button type='submit' className='mx-4'>
+          Enviar arquivo
+        </button>
       </form>
+      
+      {/* Exibe o nome do arquivo selecionado */}
+      {fileName && <span className='text-gray-500'>Arquivo selecionado: {fileName}</span>}
+
+      {/* Exibe a mensagem de sucesso ou erro */}
       {message && <span className='text-gray-500'>{message}</span>}
     </div>
   )

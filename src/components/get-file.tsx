@@ -1,3 +1,4 @@
+import { Trash2 } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import dayjs from 'dayjs'
 import ptBR from 'dayjs/locale/pt-BR'
@@ -13,7 +14,7 @@ interface FileMetadata {
   size: number
   type: string
   upload_date: string
-  url: string 
+  url: string
 }
 dayjs.locale(ptBR)
 
@@ -22,7 +23,6 @@ export const FileList: React.FC<FileListProps> = ({ subjectId }) => {
   const [message, setMessage] = useState('')
 
   useEffect(() => {
-    
     const fetchFiles = async () => {
       try {
         const response = await fetch(
@@ -40,24 +40,57 @@ export const FileList: React.FC<FileListProps> = ({ subjectId }) => {
     }
 
     fetchFiles()
+    const intervalId = setInterval(() => {
+      fetchFiles()
+    }, 1000)
+
+    return () => clearInterval(intervalId)
   }, [subjectId])
+  const deleteFile = async (fileId: string) => {
+    try {
+      const response = await fetch(
+        `http://localhost:3001/subjects/${subjectId}/files/${fileId}`,
+        { method: 'DELETE' }
+      )
+      if (!response.ok) {
+        throw new Error('Erro ao deletar arquivo.')
+      }
+      // Remove o arquivo deletado da lista local
+      setFiles(prevFiles => prevFiles.filter(file => file.file_id !== fileId))
+    } catch (error) {
+      setMessage('Erro ao deletar arquivo.')
+    }
+  }
 
   return (
     <div>
-      <h2 className='font-bold py-5'>Arquivos da Matéria:</h2>
+      <h2 className="font-bold py-5">Arquivos da Matéria:</h2>
       {message && <p>{message}</p>}
-      <div className='flex flex-wrap gap-3'>
-      {files.map(file => (
-        <div key={file.file_id} className=" flex flex-col border-4 border-zinc-700 gap-2 px-3 py-4">
-            <h1 className='font-bold'>Nome do Arquivo</h1>
-            <span>{file.original_name}</span>
-            <h1 className='font-bold'>Data de envio</h1>
-            <span>{file.upload_date}</span>
-            <a href={file.url} target="_blank" rel="noopener noreferrer" className='font-bold'>Download</a>
-          </div>
-      ))}
-      </div>
-      </div>
+      <div className="flex flex-wrap gap-3">
+        {files.map(file => (
+          <div
+            key={file.file_id}
+            className=" flex flex-col border-4 border-zinc-700 gap-2 px-3 py-4"
+          >
+              <button type='button' onClick={() => deleteFile(file.file_id)}>
+                <Trash2 className="text-red-600" />
+              </button>
 
+            <h1 className="font-bold">Nome do Arquivo</h1>
+            <span>{file.original_name}</span>
+            <h1 className="font-bold">Data de envio</h1>
+            <span>{file.upload_date}</span>
+            <a
+              href={file.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-bold"
+            >
+              Download
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
   )
 }
