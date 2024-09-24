@@ -6,14 +6,14 @@ interface FileUploadProps {
 
 export const FileUpload: React.FC<FileUploadProps> = ({ subjectId }) => {
   const [file, setFile] = useState<File | null>(null)
-  const [fileName, setFileName] = useState<string>('') // Estado para armazenar o nome do arquivo
+  const [fileName, setFileName] = useState<string>('')
   const [message, setMessage] = useState('')
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files.length > 0) {
       const selectedFile = e.target.files[0]
       setFile(selectedFile)
-      setFileName(selectedFile.name) // Atualiza o nome do arquivo selecionado
+      setFileName(selectedFile.name) 
     }
   }
 
@@ -40,7 +40,7 @@ export const FileUpload: React.FC<FileUploadProps> = ({ subjectId }) => {
       const result = await response.json()
       setMessage(result.message)
       setFile(null) 
-      setFileName('') // Limpa o nome do arquivo após o envio
+      setFileName('') 
     } catch (error) {
       setMessage('Erro ao enviar arquivo.')
     }
@@ -67,11 +67,9 @@ export const FileUpload: React.FC<FileUploadProps> = ({ subjectId }) => {
           Enviar arquivo
         </button>
       </form>
-      
-      {/* Exibe o nome do arquivo selecionado */}
+    
       {fileName && <span className='text-gray-500'>Arquivo selecionado: {fileName}</span>}
 
-      {/* Exibe a mensagem de sucesso ou erro */}
       {message && <span className='text-gray-500'>{message}</span>}
     </div>
   )

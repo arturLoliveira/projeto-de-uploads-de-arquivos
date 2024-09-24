@@ -5,7 +5,7 @@ import ProtectedRoute from './services/ProtectedRoute';
 import { CoursePage } from './components/course-page';
 import { CreateSubject } from './components/create-subject';
 import { CreateUser } from './components/create-user';
-import { Summary } from './components/summary'; // Certifique-se de importar o componente Summary
+import { Summary } from './components/summary'; 
 
 export function Routers() {
   return (
@@ -16,7 +16,7 @@ export function Routers() {
           <Route 
             path="/app" 
             element={
-              <ProtectedRoute>
+              <ProtectedRoute requiredRole='user'>
                 <Summary />
               </ProtectedRoute>
             } 
@@ -24,7 +24,7 @@ export function Routers() {
           <Route 
             path="/course/:subjectId" 
             element={
-              <ProtectedRoute>
+              <ProtectedRoute requiredRole="user">
                 <CoursePage />
               </ProtectedRoute>
             } 
@@ -32,7 +32,7 @@ export function Routers() {
           <Route 
             path="/create-course/:courseId" 
             element={
-              <ProtectedRoute>
+              <ProtectedRoute requiredRole="admin">
                 <CreateSubject />
               </ProtectedRoute>
             } 

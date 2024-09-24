@@ -27,13 +27,16 @@ export function CreateLogin() {
         throw new Error('Falha ao fazer login');
       }
   
-      const { token } = await response.json();
-      console.log('Login bem-sucedido:', token);
-      localStorage.setItem('token', token); // Armazena o token
+      const { token, role } = await response.json(); 
+      console.log('Login bem-sucedido:', token, role);
+      localStorage.setItem('token', token); 
 
-      signin({ id: email, name: "Nome do Usuário", email });
-  
-      navigate('/app'); // Navega após o login
+      signin({ id: email, name: "Nome do Usuário", email, role }); 
+      if (role === 'admin') {
+        navigate('/app');
+      } else {
+        navigate('/app');
+      }
     } catch (error) {
       setError('Falha ao fazer login');
       console.error(error);
@@ -51,9 +54,9 @@ export function CreateLogin() {
         <form onSubmit={handleLogin} className="flex-1 flex flex-col items-center justify-between gap-5">
           <Input type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} required placeholder="Digite seu email:" />
           <Input type="password" value={password} id="password" onChange={(e) => setPassword(e.target.value)} required placeholder="Digite sua senha:" />
-          <Button  className="flex-1">Fazer Login</Button>
+          <Button className="flex-1">Fazer Login</Button>
         </form>
-        {error && <p className="text-red-500">{error}</p>} {/* Exibe mensagem de erro */}
+        {error && <p className="text-red-500">{error}</p>}
         <div className="flex gap-2 items-center">
           <span className="text-zinc-300">Ainda não é cadastrado?</span>
           <Button type="button" className="text-white" onClick={handleCreateUser}>Cadastre-se</Button>

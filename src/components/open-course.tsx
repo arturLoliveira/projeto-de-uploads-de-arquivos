@@ -15,7 +15,6 @@ export function OpenCourse({ course }: OpenCourseProps) {
   const handleCourseClick = (course: string) => {
     navigate(`/create-course/${course.toLowerCase()}`)
   }
-  console.log(course)
   const [message, setMessage] = useState('')
   const [subjects, setSubjects] = useState<string[]>([])
   

@@ -1,16 +1,21 @@
-import { Navigate } from 'react-router-dom';
-import { useAuth } from './AuthServices'; 
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../services/AuthServices'; 
 
-const ProtectedRoute = ({ children }) => {
-  const { user } = useAuth(); 
+const ProtectedRoute = ({ children, requiredRole }) => {
+  const { user } = useAuth();
+  const navigate = useNavigate();
 
-  const token = localStorage.getItem('token')
+  useEffect(() => {
+    if (!user) {
+      navigate('/');
+    } else if (user.role !== requiredRole && user.role !== 'admin') {
+      navigate('/'); 
+    }
+  }, [user, requiredRole, navigate]);
 
-  if (!token && !user) {
-    return <Navigate to="/" />;
-  }
+  return (user && (user.role === requiredRole || user.role === 'admin')) ? children : null;
 
-  return children; 
 };
 
 export default ProtectedRoute;
