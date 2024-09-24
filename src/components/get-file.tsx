@@ -47,7 +47,7 @@ export const FileList: React.FC<FileListProps> = ({ subjectId }) => {
   }, [subjectId])
   const deleteFile = async (fileId: string) => {
     try {
-      const token = localStorage.getItem('token'); // Recupera o token armazenado no localStorage
+      const token = localStorage.getItem('token'); 
       if (!token) {
         throw new Error('Usuário não autenticado');
       }
@@ -57,7 +57,7 @@ export const FileList: React.FC<FileListProps> = ({ subjectId }) => {
         {
           method: 'DELETE',
           headers: {
-            'Authorization': `Bearer ${token}`, // Adiciona o token no cabeçalho Authorization
+            'Authorization': `Bearer ${token}`, 
             'Content-Type': 'application/json',
           },
         }
@@ -67,7 +67,6 @@ export const FileList: React.FC<FileListProps> = ({ subjectId }) => {
         throw new Error('Erro ao deletar arquivo.');
       }
   
-      // Remove o arquivo deletado da lista local
       setFiles(prevFiles => prevFiles.filter(file => file.file_id !== fileId));
     } catch (error) {
       setMessage('Somente administradores podem deletar arquivos.');

@@ -10,7 +10,7 @@ const ProtectedRoute = ({ children, requiredRole }) => {
     if (!user) {
       navigate('/');
     } else if (user.role !== requiredRole && user.role !== 'admin') {
-      navigate('/'); 
+      navigate('/admin'); 
     }
   }, [user, requiredRole, navigate]);
 

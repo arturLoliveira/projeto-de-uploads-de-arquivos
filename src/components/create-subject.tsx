@@ -24,12 +24,14 @@ export const CreateSubject = () => {
     }
 
     try {
+      const token = localStorage.getItem('token'); 
       const response = await fetch(
         `http://localhost:3001/courses/${course.courseId}/subjects`,
         {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`, 
           },
           body: JSON.stringify(subjectData),
         }

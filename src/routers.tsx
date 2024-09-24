@@ -6,6 +6,7 @@ import { CoursePage } from './components/course-page';
 import { CreateSubject } from './components/create-subject';
 import { CreateUser } from './components/create-user';
 import { Summary } from './components/summary'; 
+import { NotAutorization } from './components/not-autorization';
 
 export function Routers() {
   return (
@@ -13,6 +14,7 @@ export function Routers() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<CreateLogin />} />
+          <Route path="/admin" element={<NotAutorization />} />
           <Route 
             path="/app" 
             element={

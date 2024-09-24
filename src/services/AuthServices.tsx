@@ -19,17 +19,17 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [user, setUser] = useState<User | null>(null);
-  const [loading, setLoading] = useState(true); // Novo estado para carregar a inicialização
+  const [loading, setLoading] = useState(true); 
 
   useEffect(() => {
     const token = localStorage.getItem('token');
     if (token) {
       const storedUser = JSON.parse(localStorage.getItem('user') || '{}');
-      if (storedUser && storedUser.token) {
+      if (storedUser?.token) {
         setUser(storedUser);
       }
     }
-    setLoading(false); // Indica que o carregamento inicial foi concluído
+    setLoading(false); 
   }, []);
 
   const signin = (userData: User) => {
@@ -46,7 +46,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
   return (
     <AuthContext.Provider value={{ user, signin, signout, loading }}>
-      {!loading && children} {/* Só renderiza as rotas quando o carregamento termina */}
+      {!loading && children} 
     </AuthContext.Provider>
   );
 };
