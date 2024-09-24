@@ -29,9 +29,10 @@ export function CreateLogin() {
   
       const { token, role } = await response.json(); 
       console.log('Login bem-sucedido:', token, role);
-      localStorage.setItem('token', token); 
+      
+      signin({ id: email, name: "Nome do Usuário", email, role, token }); 
+      
 
-      signin({ id: email, name: "Nome do Usuário", email, role }); 
       if (role === 'admin') {
         navigate('/app');
       } else {

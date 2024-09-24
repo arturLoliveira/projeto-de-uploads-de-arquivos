@@ -28,7 +28,6 @@ export const FileList: React.FC<FileListProps> = ({ subjectId }) => {
         const response = await fetch(
           `http://localhost:3001/subjects/${subjectId}/files`
         )
-        console.log(response)
         if (!response.ok) {
           throw new Error('Erro ao recuperar arquivos.')
         }
@@ -48,19 +47,32 @@ export const FileList: React.FC<FileListProps> = ({ subjectId }) => {
   }, [subjectId])
   const deleteFile = async (fileId: string) => {
     try {
+      const token = localStorage.getItem('token'); // Recupera o token armazenado no localStorage
+      if (!token) {
+        throw new Error('Usuário não autenticado');
+      }
+  
       const response = await fetch(
         `http://localhost:3001/subjects/${subjectId}/files/${fileId}`,
-        { method: 'DELETE' }
-      )
+        {
+          method: 'DELETE',
+          headers: {
+            'Authorization': `Bearer ${token}`, // Adiciona o token no cabeçalho Authorization
+            'Content-Type': 'application/json',
+          },
+        }
+      );
+      
       if (!response.ok) {
-        throw new Error('Erro ao deletar arquivo.')
+        throw new Error('Erro ao deletar arquivo.');
       }
+  
       // Remove o arquivo deletado da lista local
-      setFiles(prevFiles => prevFiles.filter(file => file.file_id !== fileId))
+      setFiles(prevFiles => prevFiles.filter(file => file.file_id !== fileId));
     } catch (error) {
-      setMessage('Erro ao deletar arquivo.')
+      setMessage('Somente administradores podem deletar arquivos.');
     }
-  }
+  };
 
   return (
     <div>
