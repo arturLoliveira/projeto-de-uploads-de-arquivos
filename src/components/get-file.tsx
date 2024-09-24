@@ -97,7 +97,7 @@ export const FileList: React.FC<FileListProps> = ({ subjectId }) => {
               rel="noopener noreferrer"
               className="font-bold flex gap-4"
             >
-              Download
+              Vizualizar
               <Download className='text-green-600' />
             </a>
           </div>
