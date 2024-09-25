@@ -17,6 +17,14 @@ export function OpenCourse({ course }: OpenCourseProps) {
   }
   const [message, setMessage] = useState('')
   const [subjects, setSubjects] = useState<string[]>([])
+
+  const formatSubjectName = (subject: string) => {
+    return subject
+      .replace(/csi\d{3}-/, '') 
+      .replace(/_/g, ' ') 
+      .toLowerCase() 
+      .replace(/\b\w/g, char => char.toUpperCase()); 
+  };
   
   useEffect(() => {
     const fetchSubjects = async () => {
@@ -48,7 +56,7 @@ export function OpenCourse({ course }: OpenCourseProps) {
         <DialogDescription>Escolha uma matéria abaixo:</DialogDescription>
       </div>
 
-      <ul className="space-y-2 gap-6 my-6 flex flex-col">
+      <ul className="space-y-2 gap-6 my-6 flex flex-col h-[80%] overflow-y-auto scrollbar scroll-smooth">
         {subjects.map((subject, index) => (
           // biome-ignore lint/a11y/useKeyWithClickEvents: <explanation>
           // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
@@ -59,7 +67,7 @@ export function OpenCourse({ course }: OpenCourseProps) {
             className="flex gap-2 text-white cursor-pointer hover:underline"
           >
             <SquareLibrary className="text-zinc-600" />
-            {subject}
+            {formatSubjectName(subject)}
           </li>
         ))}
       </ul>
