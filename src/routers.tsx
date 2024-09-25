@@ -7,6 +7,8 @@ import { CreateSubject } from './components/create-subject';
 import { CreateUser } from './components/create-user';
 import { Summary } from './components/summary'; 
 import { NotAutorization } from './components/not-autorization';
+import RecoverPassword from './components/reset-password';
+import { RequestRecoverPassword } from './components/recover-password';
 
 export function Routers() {
   return (
@@ -15,6 +17,8 @@ export function Routers() {
         <Routes>
           <Route path="/" element={<CreateLogin />} />
           <Route path="/admin" element={<NotAutorization />} />
+          <Route path="/recover-password" element={<RecoverPassword />} />
+          <Route path="/reset-password/:token" element={<RequestRecoverPassword />} />  
           <Route 
             path="/app" 
             element={
