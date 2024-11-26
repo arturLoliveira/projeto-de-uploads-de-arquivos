@@ -2,10 +2,10 @@ import { useState } from 'react'
 import { Button } from './ui/button'
 
 interface FileUploadProps {
-  subjectId: string | undefined
+  folderId: string | undefined
 }
 
-export const FileUpload: React.FC<FileUploadProps> = ({ subjectId }) => {
+export const FolderFileUpload: React.FC<FileUploadProps> = ({ folderId }) => {
   const [file, setFile] = useState<File | null>(null)
   const [fileName, setFileName] = useState<string>('')
   const [message, setMessage] = useState('')
@@ -27,7 +27,7 @@ export const FileUpload: React.FC<FileUploadProps> = ({ subjectId }) => {
 
     try {
       const response = await fetch(
-        `http://localhost:3001/subjects/folders/${subjectId}/files`,
+        `http://localhost:3001/subjects/folders/${folderId}/files`,
         {
           method: 'POST',
           body: formData,

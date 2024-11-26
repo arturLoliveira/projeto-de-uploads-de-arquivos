@@ -1,5 +1,5 @@
 import { CirclePlus, SquareLibrary, X } from 'lucide-react'
-import { DialogClose, DialogContent, DialogDescription } from './ui/dialog'
+import { DialogClose, DialogContent, DialogTitle } from './ui/dialog'
 import { useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 
@@ -53,7 +53,7 @@ export function OpenCourse({ course }: OpenCourseProps) {
             <X className="size-5 text-zinc-600" />
           </DialogClose>
         </div>
-        <DialogDescription>Escolha uma matéria abaixo:</DialogDescription>
+        <DialogTitle>Escolha uma matéria abaixo:</DialogTitle>
       </div>
 
       <ul className="space-y-2 gap-6 my-6 flex flex-col h-[80%] overflow-y-auto scrollbar scroll-smooth">

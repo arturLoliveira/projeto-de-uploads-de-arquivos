@@ -9,6 +9,7 @@ import { Summary } from './components/summary';
 import { NotAutorization } from './components/not-autorization';
 import RecoverPassword from './components/reset-password';
 import { RequestRecoverPassword } from './components/recover-password';
+import { FolderPageList } from './components/folder-page-list';
 
 export function Routers() {
   return (
@@ -32,6 +33,14 @@ export function Routers() {
             element={
               <ProtectedRoute requiredRole="user">
                 <CoursePage />
+              </ProtectedRoute>
+            } 
+          />
+          <Route 
+            path="/subject/:folderId" 
+            element={
+              <ProtectedRoute requiredRole="user">
+                <FolderPageList />
               </ProtectedRoute>
             } 
           />
